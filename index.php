@@ -8,8 +8,8 @@
 			die(mysqli_connect_error());
 		}
 
-	$ways = array('home', 'login', 'register', 'chat');
 	$traitements = array('chat', 'users');
+	$ways = array('home', 'login', 'register', 'chat');
 
 	$page = 'home';
 
@@ -17,7 +17,7 @@
 	{
 		if (in_array($_GET['page'], $traitements))
 		{
-			require('apps/traitement_'.$page.'.php');
+			require('apps/traitement_'.$_GET['page'].'.php');
 		}
 		else if (in_array($_GET['page'], $ways))
 		{
