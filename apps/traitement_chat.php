@@ -1,7 +1,5 @@
 <?php
 	
-	$message = "";
-	
 	// if (isset($_SESSION['id']))
 	// {
 	// 	$id_user = intval($_SESSION['id']);
@@ -15,7 +13,7 @@
 				// $query = "INSERT INTO messages (content, id_user) VALUES ('".$message."', '".$id_user."')";
 				$query = "INSERT INTO messages (content) VALUES ('".$message."')";
 				$result = mysqli_query($database, $query);
-				header('Location: index.php?page=chat');
+				// header('Location: index.php?page=chat');
 				exit;
 			}
 		}
