@@ -1,7 +1,5 @@
 <?php
 	
-	$message = "";
-	
 	// if (isset($_SESSION['id']))
 	// {
 	// 	$id_user = intval($_SESSION['id']);
