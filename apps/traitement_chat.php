@@ -1,8 +1,8 @@
 <?php
 	
-	// if (isset($_SESSION['id']))
-	// {
-	// 	$id_user = intval($_SESSION['id']);
+	if (isset($_SESSION['id']))
+	{
+		$id_user = intval($_SESSION['id']);
 
 		if (isset($_POST['message']))
 		{
@@ -17,6 +17,6 @@
 				exit;
 			}
 		}
-	// }
+	}
 
 ?>

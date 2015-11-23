@@ -1,6 +1,6 @@
 	$('document').ready(function()
 	{
-		$.get('?page=chat_display', function(page)
+		$.get('../chien_rouleau/views/chat_display.phtml', function(page)
 		{
 				$('.chatbox').html(page);
 		});
