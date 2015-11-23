@@ -13,13 +13,13 @@
 
 	$page = 'home';
 
-	if (isset($_GET['page'])
+	if (isset($_GET['page']))
 	{
-		if (in_array($_GET['page'], $traitements)
+		if (in_array($_GET['page'], $traitements))
 		{
 			require('apps/traitement_'.$page.'.php');
 		}
-		else if (in_array($_GET['page'], $ways)
+		else if (in_array($_GET['page'], $ways))
 		{
 			$page = $_GET['page'];
 		}
