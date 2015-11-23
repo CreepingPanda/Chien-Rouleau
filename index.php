@@ -11,7 +11,7 @@
 
 	$page = 'home';
 
-	errors = array();
+	$errors = array();
 
 	if (isset($_GET['page']))
 	{
