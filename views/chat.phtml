@@ -6,12 +6,13 @@
 	<div class="userlist">
 	</div>
 
-	<form method="post" action="?page=chat">
+	<form method="post">
 		<fieldset>
 			<label for="send">Message : </label>
 			<input type="text" id="send" name="message" value="<?=htmlentities($message)?>"/>
-			<button type="submit">Send</button>
+			<button class="send">Send</button>
 		</fieldset>
 	</form>
+	<input type="text">
 
 </div>
