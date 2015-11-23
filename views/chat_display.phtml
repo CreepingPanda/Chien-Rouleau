@@ -1,0 +1,15 @@
+<form method="post" action="?page=chat">
+	<fieldset>
+		<label for="send">Message : </label>
+		<input type="text" id="send" name="message" value="<?=htmlentities($message)?>"/>
+		<button class="send">Send</button>
+	</fieldset>
+</form>
+
+<div class="messages">
+	<?php require('apps/messages.php'); ?>
+</div>
+
+<div class="userlist">
+	<?php require('apps/userlist.php'); ?>
+</div>
