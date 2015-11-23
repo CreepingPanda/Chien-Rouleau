@@ -1,7 +1,7 @@
-<form method="post" action="?page=chat">
+<form class="chat" method="post" action="?page=chat">
 	<fieldset>
-		<label for="send">Message : </label>
-		<input type="text" id="send" name="message" value="<?=htmlentities($message)?>"/>
+		<label for="message">Message : </label>
+		<input type="text" id="message" name="message" value="<?=htmlentities($message)?>"/>
 		<button class="send">Send</button>
 	</fieldset>
 </form>

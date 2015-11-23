@@ -1,7 +1,19 @@
 <?php
-	$query = "SELECT * FROM messages ORDER BY id DESC LIMIT 0, 5";
-	$result = mysqli_query($database, $query);
+	$selectQuery = "SELECT * FROM messages ORDER BY id DESC LIMIT 0, 5";
+	$selectResult = mysqli_query($database, $selectQuery);
 
-	while ( $message = mysqli_fetch_assoc($result) )
-		require('views/messages.phtml');
+
+	if ( $selectResult )
+	{
+		while ( $message = mysqli_fetch_assoc($selectResult) )
+		{
+			$userQuery = "SELECT * FROM users WHERE id = '".$message['id_user']."'";
+			$userResult = mysqli_query($database, $userQuery);
+			$user = mysqli_fetch_assoc($userResult);
+			require('views/messages.phtml');
+		}
+	}
+	else {
+		echo "Aucun message à afficher.";
+	}
 ?>
