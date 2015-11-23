@@ -3,10 +3,8 @@
 	session_start();
 
 	$database = mysqli_connect('192.168.1.97', 'chien', 'chien', 'chien_rouleau');
-		if ($database === false)
-		{
-			die(mysqli_connect_error());
-		}
+	if ($database === false)
+		die(mysqli_connect_error());
 
 	$traitements = array('chat', 'users');
 	$ways = array('home', 'login', 'register', 'chat');
@@ -19,7 +17,7 @@
 		{
 			require('apps/traitement_'.$_GET['page'].'.php');
 		}
-		else if (in_array($_GET['page'], $ways))
+		if (in_array($_GET['page'], $ways))
 		{
 			$page = $_GET['page'];
 		}

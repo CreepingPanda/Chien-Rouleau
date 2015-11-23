@@ -1,3 +1,17 @@
-<div>
-	Salut
+<div class="chatbox">
+
+	<div class="messages">
+	</div>
+
+	<div class="userlist">
+	</div>
+
+	<form method="post" action="?page=chat">
+		<fieldset>
+			<label for="send">Message : </label>
+			<input type="text" id="send" name="message" value="<?=htmlentities($message)?>"/>
+			<button type="submit">Send</button>
+		</fieldset>
+	</form>
+
 </div>
