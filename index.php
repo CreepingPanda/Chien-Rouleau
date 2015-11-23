@@ -6,7 +6,7 @@
 	if ($database === false)
 		die(mysqli_connect_error());
 
-	$traitements = array('chat', 'users');
+	$traitements = array('chat', 'users', 'logout');
 	$ways = array('home', 'login', 'register', 'chat');
 
 	$page = 'home';
