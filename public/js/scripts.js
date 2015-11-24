@@ -3,6 +3,7 @@
 $('document').ready(function()
 {
 
+	// ____ REFRESH
 	function chatRefresh()
 	{
 		$.ajax(
@@ -16,6 +17,7 @@ $('document').ready(function()
 		// setInterval(chatRefresh(), 1800);
 
 
+	// ____ SUBMIT
 	$('.chat').on('submit', function(e)
 	{
 		e.preventDefault();
