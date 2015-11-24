@@ -15,6 +15,18 @@
 				exit;
 			}
 		}
+		else if (isset($_POST['pv']))
+		{
+			$pv = mysqli_real_escape_string($database, $_POST['pv']);
+			$id_reader = intval($_GET['id']);
+
+			if (strlen($pv)>0 && strlen($pv)<512)
+			{
+				$query = "INSERT INTO p_messages (content, id_writer, id_reader) VALUES ('".$pv."', '".$id_user."', '".$id_reader."')";
+				$result = mysqli_query($database, $query);
+				exit;
+			}
+		}
 	}
 
 ?>

@@ -51,7 +51,7 @@ $('document').ready(function()
 // ________________
 
 
-// ____ SUBMIT ____
+// ____ SUBMIT PUBLIC ____
 	function submitMessage()
 	{
 		$('.chat').on('submit', function(e)
@@ -69,6 +69,32 @@ $('document').ready(function()
 				})
 
 				.done(function(message) {
+	    			console.log('Okay')
+	 			});
+			}
+		});
+	};
+// ________________
+
+
+// ____ SUBMIT PRIVE ____
+	function submitMessage()
+	{
+		$('.chat').on('submit', function(e)
+		{
+			e.preventDefault();
+			var pv = $('#pv').val();
+			$('#pv').val('').blur();
+			if (pv.length>0 && pv.length<512)
+			{
+				$.ajax(
+				{
+					url: 'index.php?page=chat',
+					type: 'POST',
+					data: {pv:pv}
+				})
+
+				.done(function(pv) {
 	    			console.log('Okay')
 	 			});
 			}
