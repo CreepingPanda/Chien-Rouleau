@@ -7,14 +7,16 @@ $('document').ready(function()
 		var message = $('#message').val();
 		if (message.length>0 && message.length<512)
 		{
+			message = JSON.parse(message);
 			$.ajax(
 			{
-				url: $(this).attr('?pages=chat'),
-				type: $(this).attr('post'),
-				data: $(this).serialize(),
-				success: function(json)
+				url: 'index.php?page=chat',
+				type: 'POST',
+				dataType: 'json',
+				data: message,
+				success: function(data)
 				{
-					$('.chatbox').html(json)
+					$('.chatbox').html(data);
 				}
 			});
 		}
