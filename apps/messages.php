@@ -1,5 +1,5 @@
 <?php
-	$selectQuery = "SELECT * FROM messages ORDER BY id DESC LIMIT 0, 10";
+	$selectQuery = "SELECT * FROM messages ORDER BY id DESC LIMIT 0, 100";
 	$selectResult = mysqli_query($database, $selectQuery);
 
 	if ( $selectResult )
