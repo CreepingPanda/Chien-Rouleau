@@ -26,6 +26,13 @@
 		}
 	}
 
-	require('apps/skel.php');
+	if (isset($_GET['ajax'], $page))
+	{
+		require('apps/'.$page.'.php');
+	}
+	else
+	{		
+		require('apps/skel.php');
+	}
 
 ?>

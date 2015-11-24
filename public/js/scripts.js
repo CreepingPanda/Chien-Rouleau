@@ -8,13 +8,13 @@ $('document').ready(function()
 	{
 		$.ajax(
 		{
-			url: 'index.php?page=messages'
+			url: 'index.php?page=messages&ajax'
 		})
 		.done(function(refresh) {
-			$('.chatbox').load('?page=messages')
+			$('.messages').html(refresh)
 		});
 	}
-		setInterval(chatRefresh(), 1800);
+		setInterval(chatRefresh(), 1000);
 
 
 	// ____ SUBMIT
