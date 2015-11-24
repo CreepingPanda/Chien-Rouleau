@@ -261,8 +261,8 @@ padding: 10px;
   width: 77%;
   position:fixed;
   top:72px;
-  left: 10.5%;
   padding: 12px 0 0 18px;
+  margin-left: -18px;
 }
 .chatbox input[type=text] {
   width: 140px;
@@ -298,6 +298,7 @@ figure {
 }
 .msg {
   margin: 0;
+  padding: 5px 0;
 }
 .highlight {
   background:#444444; 
