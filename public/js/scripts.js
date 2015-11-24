@@ -78,7 +78,7 @@ $('document').ready(function()
 
 
 // ____ SUBMIT PRIVE ____
-	function submitMessage()
+	function submitMessageP()
 	{
 		$('.chat').on('submit', function(e)
 		{
@@ -108,6 +108,7 @@ $('document').ready(function()
 	setInterval(chatRefresh, 1000);
 	setInterval(userlistRefresh, 30000);
 	submitMessage();
+	submitMessageP();
 // ________________
 
 
