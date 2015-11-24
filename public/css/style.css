@@ -278,3 +278,7 @@ padding: 10px;
 body {
   background-color: #B7B7B7;
 }
+
+figure {
+  display: inline-block;
+}
