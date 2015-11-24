@@ -12,6 +12,7 @@
 			{
 				$query = "INSERT INTO messages (content, id_user) VALUES ('".$message."', '".$id_user."')";
 				$result = mysqli_query($database, $query);
+				json_encode($message['content']);
 				header('Location: index.php?page=chat');
 				exit;
 			}
