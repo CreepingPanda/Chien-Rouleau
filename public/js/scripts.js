@@ -3,21 +3,17 @@
 $('document').ready(function()
 {
 //_____HIGHLIGHT_____
-
-function highlight(){
-	var array = $('.msg').toArray();
-	var i = 0; 
-	while(i <= array.length) {
-		if(i % 2==0) {
-			$('.msg').eq(i).addClass('highlight');
+	function highlight(){
+		var array = $('.msg').toArray();
+		var i = 0; 
+		while(i <= array.length) {
+			if(i % 2==0) {
+				$('.msg').eq(i).addClass('highlight');
+			}
+			i++;
 		}
-		i++;
-	}	
-};
-
-highlight();
-console.log(array.length);
-
+	};
+	highlight();
 
 // ____ REFRESH ____
 	function chatRefresh()
