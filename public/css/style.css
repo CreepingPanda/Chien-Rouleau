@@ -258,7 +258,7 @@ padding: 10px;
   margin: 0 0 18px 0;
   padding: 4px 4px 1px 4px;
   outline: none;
-  border-radius: 4px;
+  border-radius: 0px;
   border: none;
   border-bottom: 1px solid #D4D4D4;
   background-color: #3D3D3D;
@@ -267,6 +267,7 @@ padding: 10px;
 }
 .chatbox input[type=text]:focus {
   width: 280px;
+  border-radius: 4px;
   background-color: #D4D4D4;
   color: #3D3D3D;
 }
