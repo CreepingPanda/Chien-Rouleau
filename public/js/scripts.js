@@ -1,7 +1,10 @@
 'use strict';
 
+
 $('document').ready(function()
 {
+
+
 //_____HIGHLIGHT_____
 	function highlight(){
 		var array = $('.msg').toArray();
@@ -13,9 +16,10 @@ $('document').ready(function()
 			i++;
 		}
 	};
-	highlight();
+// ________________
 
-// ____ REFRESH ____
+
+// ____ REFRESH MESSAGES ____
 	function chatRefresh()
 	{
 		$.ajax(
@@ -23,38 +27,57 @@ $('document').ready(function()
 			url: 'index.php?page=messages&ajax'
 		})
 
-		.done(function(refresh) {
-			$('.messages').html(refresh)
+		.done(function(messages)
+		{
+			$('.messages').html(messages)
 		});
-	}
-	
-	setInterval(chatRefresh, 1000);
+	};
 // ________________
 
+
+// ____ REFRESH USERLIST ____
+	function userlistRefresh()
+	{
+		$.ajax(
+		{
+			url: 'index.php?page=userlist&ajax'
+		})
+
+		.done(function(users)
+		{
+			$('.userlist').html(users)
+		});
+	};
 
 // ____ SUBMIT ____
-	$('.chat').on('submit', function(e)
+	function submitMessage()
 	{
-		e.preventDefault();
-		var message = $('#message').val();
-		$('#message').val('').blur();
-		if (message.length>0 && message.length<512)
+		$('.chat').on('submit', function(e)
 		{
-			$.ajax(
+			e.preventDefault();
+			var message = $('#message').val();
+			$('#message').val('').blur();
+			if (message.length>0 && message.length<512)
 			{
-				url: 'index.php?page=chat',
-				type: 'POST',
-				data: {message:message}
-			})
+				$.ajax(
+				{
+					url: 'index.php?page=chat',
+					type: 'POST',
+					data: {message:message}
+				})
 
-			.done(function(message) {
-    			console.log('Okay')
- 			});
-		}
-	});
+				.done(function(message) {
+	    			console.log('Okay')
+	 			});
+			}
+		});
+	};
 // ________________
 
-
+	highlight();
+	setInterval(chatRefresh, 1000);
+	setInterval(userlistRefresh, 30000);
+	submitMessage();
 
 
 });
