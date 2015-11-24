@@ -6,7 +6,7 @@ $('document').ready(function()
 
 
 //_____HIGHLIGHT_____
-	function highlight(){
+	function highlightEvenMsg(){
 		var array = $('.msg').toArray();
 		var i = 0; 
 		while(i <= array.length) {
@@ -48,6 +48,8 @@ $('document').ready(function()
 			$('.userlist').html(users)
 		});
 	};
+// ________________
+
 
 // ____ SUBMIT ____
 	function submitMessage()
@@ -74,10 +76,13 @@ $('document').ready(function()
 	};
 // ________________
 
-	highlight();
+
+// ____ APPELS FONCTIONS ____
+	highlightEvenMsg();
 	setInterval(chatRefresh, 1000);
 	setInterval(userlistRefresh, 30000);
 	submitMessage();
+// ________________
 
 
 });
