@@ -1,1 +1,1 @@
-<p class="">[<?=date("H:i:s", strtotime($message['hour']))?>] <?=$user['login']?> : <strong><?=$message['content']?></strong></p>
+<p class="">[<?=date("H:i:s", strtotime($message['hour']))?>] <?=htmlentities($user['login'])?> : <strong><?=htmlentities($message['content'])?></strong></p>

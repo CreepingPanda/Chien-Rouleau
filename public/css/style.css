@@ -257,8 +257,8 @@ padding: 10px;
 }
 
 .chat {
-  background-color: #3D3D3D;
-  width: 77%;
+  background-color: #222222;
+  width: 58.3%;
   position:fixed;
   top:72px;
   padding: 12px 0 0 18px;
@@ -272,7 +272,7 @@ padding: 10px;
   border-radius: 0px;
   border: none;
   border-bottom: 1px solid #D4D4D4;
-  background-color: #3D3D3D;
+  background-color: #222222;
   font-weight: bold;
   transition: all 0.3s ease-out;
 }
@@ -304,4 +304,23 @@ figure {
   background:#444444; 
   padding: 5px 18px;
   margin: 0 -18px;
+}
+.userlist {
+  background: #D2D2D2;
+  padding-top: 12px;
+  height:245px;
+}
+.userlistTitle {
+  background: #AEAEAE;
+  padding-top: 15px;
+  height:55px;
+}
+.userlistTitle h1 {
+  margin: 0;
+  padding-bottom: 20px;
+  font-size: 2rem;
+}
+.userlist a:hover {
+  text-decoration: none;
+  color:#235076;
 }
