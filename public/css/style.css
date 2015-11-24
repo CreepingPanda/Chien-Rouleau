@@ -285,6 +285,9 @@ padding: 10px;
 .messages {
   margin-top:40px;
 }
+.messages strong {
+  color:#63D3FF;
+}
 .send {
   opacity: 0;
 }
