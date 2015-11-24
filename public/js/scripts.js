@@ -1,16 +1,18 @@
 'use strict';
 
-
 $('document').ready(function()
 {
 
 
 //_____HIGHLIGHT_____
-	function highlightEvenMsg(){
+	function highlightEvenMsg()
+	{
 		var array = $('.msg').toArray();
 		var i = 0; 
-		while(i <= array.length) {
-			if(i % 2==0) {
+		while(i <= array.length)
+		{
+			if(i % 2==0)
+			{
 				$('.msg').eq(i).addClass('highlight');
 			}
 			i++;
@@ -35,6 +37,22 @@ $('document').ready(function()
 // ________________
 
 
+// ____ REFRESH MESSAGES ____
+	function pvRefresh()
+	{
+		$.ajax(
+		{
+			url: 'index.php?page=p_messages&ajax'
+		})
+
+		.done(function(messages)
+		{
+			$('.p_messages').html(messages)
+		});
+	};
+// ________________
+
+
 // ____ REFRESH USERLIST ____
 	function userlistRefresh()
 	{
@@ -51,55 +69,49 @@ $('document').ready(function()
 // ________________
 
 
-// ____ SUBMIT PUBLIC ____
+// ____ SUBMIT ____
 	function submitMessage()
 	{
 		$('.chat').on('submit', function(e)
 		{
 			e.preventDefault();
 			var message = $('#message').val();
-			$('#message').val('').blur();
-			if (message.length>0 && message.length<512)
-			{
-				$.ajax(
-				{
-					url: 'index.php?page=chat',
-					type: 'POST',
-					data: {message:message}
-				})
+			var pv = $('#pv').val();
 
-				.done(function(message) {
-	    			console.log('Okay')
-	 			});
+		// ____ Message public ____
+			if (message != '')
+			{
+				$('#message').val('').blur();
+				if (message.length>0 && message.length<512)
+				{
+					$.ajax(
+					{
+						url: 'index.php?page=chat',
+						type: 'POST',
+						data: {message:message}
+					})
+				}
+			}
+
+		// ____ Message privé ____
+			else if (pv != '')
+			{
+				$('#pv').val('').blur();
+				if (pv.length>0 && pv.length<512)
+				{
+					$.ajax(
+					{
+						url: 'index.php?page=chat',
+						type: 'POST',
+						data: {pv:pv}
+					})
+				}
 			}
 		});
 	};
 // ________________
 
 
-// ____ SUBMIT PRIVE ____
-	function submitMessageP()
-	{
-		$('.chat').on('submit', function(e)
-		{
-			e.preventDefault();
-			var pv = $('#pv').val();
-			$('#pv').val('').blur();
-			if (pv.length>0 && pv.length<512)
-			{
-				$.ajax(
-				{
-					url: 'index.php?page=chat',
-					type: 'POST',
-					data: {pv:pv}
-				})
-
-				.done(function(pv) {
-	    			console.log('Okay')
-	 			});
-			}
-		});
-	};
 // ________________
 
 
@@ -108,7 +120,6 @@ $('document').ready(function()
 	setInterval(chatRefresh, 1000);
 	setInterval(userlistRefresh, 30000);
 	submitMessage();
-	submitMessageP();
 // ________________
 
 
