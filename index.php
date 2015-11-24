@@ -7,7 +7,7 @@
 		die(mysqli_connect_error());
 
 	$traitements = array('chat', 'users', 'logout');
-	$ways = array('home', 'login', 'register', 'chat', 'messages', 'userlist');
+	$ways = array('home', 'login', 'register', 'chat', 'messages', 'userlist', 'pv_display', 'p_messages');
 
 
 	$page = 'home';
