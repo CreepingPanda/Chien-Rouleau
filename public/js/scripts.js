@@ -16,7 +16,7 @@ $('document').ready(function()
 		});
 	}
 	
-	setInterval(chatRefresh(), 1000);
+	setInterval(chatRefresh, 1000);
 // ________________
 
 
