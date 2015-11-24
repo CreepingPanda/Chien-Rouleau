@@ -1,0 +1,10 @@
+<form class="chat" method="post" action="index.php?page=chat">
+	<fieldset>
+		<input type="text" id="pv" name="pv" placeholder="Message" value="<?=htmlentities($message)?>"/>
+		<button class="send">Send</button>
+	</fieldset>
+</form>
+
+<div class="p_messages">
+	<?php require('apps/p_messages.php'); ?>
+</div>
