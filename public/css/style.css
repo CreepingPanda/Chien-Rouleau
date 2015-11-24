@@ -244,3 +244,32 @@ padding: 10px;
   min-height: 80px;
   padding: 5px;
 }
+
+/* ____ CHAT ____ */
+
+.chatbox {
+  padding: 18px;
+  background-color: #3D3D3D;
+  color: #D4D4D4;
+}
+
+.chatbox input[type=text] {
+  width: 140px;
+  margin: 0 0 18px 0;
+  padding: 4px 4px 1px 4px;
+  outline: none;
+  border-radius: 4px;
+  border: none;
+  border-bottom: 1px solid #D4D4D4;
+  background-color: #3D3D3D;
+  font-weight: bold;
+  transition: all 0.3s ease-out;
+}
+.chatbox input[type=text]:focus {
+  width: 280px;
+  background-color: #D4D4D4;
+  color: #3D3D3D;
+}
+.send {
+  opacity: 0;
+}
