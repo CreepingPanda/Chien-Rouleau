@@ -8,21 +8,21 @@ $('document').ready(function()
 	{
 		$.ajax(
 		{
-			url: 'index.php?page=chat'
+			url: 'index.php?page=messages'
 		})
 		.done(function(refresh) {
 			$('.chatbox').load('?page=messages')
 		});
 	}
-		// setInterval(chatRefresh(), 1800);
+		setInterval(chatRefresh(), 1800);
 
 
 	// ____ SUBMIT
 	$('.chat').on('submit', function(e)
 	{
 		e.preventDefault();
-		$('input').empty();
 		var message = $('#message').val();
+		$('#message').val('').blur();
 		if (message.length>0 && message.length<512)
 		{
 			$.ajax(
