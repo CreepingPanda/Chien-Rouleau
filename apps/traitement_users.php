@@ -43,8 +43,12 @@ if (isset($_POST['login'], $_POST['password']))
 		{
 			if (password_verify($password, $user['pass']))
 			{
-				$_SESSION['id'] = $user['id'];
+				$_SESSION['id'] = intval($user['id']);
 				$_SESSION['login'] = $user['login'];
+
+				$query = "UPDATE users SET logged = 1 WHERE id = '".$user['id']."'";
+				$result = mysqli_query($database, $query);
+
 				header('Location: index.php');
 				exit;
 			}
