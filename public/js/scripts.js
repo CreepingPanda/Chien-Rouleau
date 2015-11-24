@@ -77,7 +77,6 @@ $('document').ready(function()
 			e.preventDefault();
 			var message = $('#message').val();
 			var pv = $('#pv').val();
-
 		// ____ Message public ____
 			if (message != '')
 			{
@@ -92,7 +91,6 @@ $('document').ready(function()
 					})
 				}
 			}
-
 		// ____ Message privé ____
 			else if (pv != '')
 			{
@@ -109,9 +107,6 @@ $('document').ready(function()
 			}
 		});
 	};
-// ________________
-
-
 // ________________
 
 
