@@ -2,6 +2,22 @@
 
 $('document').ready(function()
 {
+//_____HIGHLIGHT_____
+
+function highlight(){
+	var array = $('.msg').toArray();
+	var i = 0; 
+	while(i <= array.length) {
+		if(i % 2==0) {
+			$('.msg').eq(i).addClass('highlight');
+		}
+		i++;
+	}	
+};
+
+highlight();
+console.log(array.length);
+
 
 // ____ REFRESH ____
 	function chatRefresh()
@@ -41,5 +57,8 @@ $('document').ready(function()
 		}
 	});
 // ________________
+
+
+
 
 });
