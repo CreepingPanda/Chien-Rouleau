@@ -12,10 +12,7 @@ $('document').ready(function()
 				url: 'index.php?page=chat',
 				type: 'POST',
 				data: {message:message},
-				})
-				.done(function( message ) {
-    			console.log( 'okay');
- 			 });
+			})
 		}
 	});
 
