@@ -6,8 +6,7 @@
 
 		if (isset($_POST['message']))
 		{
-			$message = json_decode($_POST['message']);
-			$message = mysqli_real_escape_string($database, $message);
+			$message = mysqli_real_escape_string($database, $_POST['message']);
 
 			if (strlen($message)>0 && strlen($message)<512)
 			{
