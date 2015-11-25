@@ -13,7 +13,7 @@ $('document').ready(function()
 			var message = $('#message').val();
 			var pv = $('#pv').val();
 		// ____ Message public ____
-			if (message != '')
+			if (message != '' && message != ' ')
 			{
 				if (message.length>0 && message.length<512)
 				{
@@ -27,7 +27,7 @@ $('document').ready(function()
 				}
 			}
 		// ____ Message privé ____
-			else if (pv != '')
+			else if (pv != '' && pv != ' ')
 			{
 				if (pv.length>0 && pv.length<512)
 				{
@@ -93,8 +93,8 @@ $('document').ready(function()
 // ________________
 
 
-//_____HIGHLIGHT_____
-	function highlightEvenMsg()
+// ____ HIGHLIGHT ODD ____
+	function highlightOddMsg()
 	{
 		var msg = $('.msg').toArray();
 		var i = 0; 
@@ -114,7 +114,7 @@ $('document').ready(function()
 	submitMessage();
 	setInterval(chatRefresh, 1000);
 	setInterval(userlistRefresh, 30000);
-	highlightEvenMsg();
+	// highlightOddMsg();
 // ________________
 
 
