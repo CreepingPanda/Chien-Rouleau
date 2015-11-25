@@ -4,19 +4,43 @@ $('document').ready(function()
 {
 
 
-//_____HIGHLIGHT_____
-	function highlightEvenMsg()
+// ____ SUBMIT ____
+	function submitMessage()
 	{
-		var array = $('.msg').toArray();
-		var i = 0; 
-		while(i <= array.length)
+		$('.chat').on('submit', function(e)
 		{
-			if(i % 2==0)
+			e.preventDefault();
+			var message = $('#message').val();
+			var pv = $('#pv').val();
+		// ____ Message public ____
+			if (message != '')
 			{
-				$('.msg').eq(i).addClass('highlight');
+				if (message.length>0 && message.length<512)
+				{
+					$('#message').val('').blur();
+					$.ajax(
+					{
+						url: 'index.php?page=chat',
+						type: 'POST',
+						data: {message:message}
+					})
+				}
 			}
-			i++;
-		}
+		// ____ Message privé ____
+			else if (pv != '')
+			{
+				if (pv.length>0 && pv.length<512)
+				{
+					$('#pv').val('').blur();
+					$.ajax(
+					{
+						url: 'index.php?page=chat',
+						type: 'POST',
+						data: {pv:pv}
+					})
+				}
+			}
+		});
 	};
 // ________________
 
@@ -69,52 +93,28 @@ $('document').ready(function()
 // ________________
 
 
-// ____ SUBMIT ____
-	function submitMessage()
+//_____HIGHLIGHT_____
+	function highlightEvenMsg()
 	{
-		$('.chat').on('submit', function(e)
+		var msg = $('.msg').toArray();
+		var i = 0; 
+		while(i <= msg.length)
 		{
-			e.preventDefault();
-			var message = $('#message').val();
-			var pv = $('#pv').val();
-		// ____ Message public ____
-			if (message != '')
+			if(i % 2 == 0)
 			{
-				$('#message').val('').blur();
-				if (message.length>0 && message.length<512)
-				{
-					$.ajax(
-					{
-						url: 'index.php?page=chat',
-						type: 'POST',
-						data: {message:message}
-					})
-				}
+				$('.msg').eq(i).addClass('highlight');
 			}
-		// ____ Message privé ____
-			else if (pv != '')
-			{
-				$('#pv').val('').blur();
-				if (pv.length>0 && pv.length<512)
-				{
-					$.ajax(
-					{
-						url: 'index.php?page=chat',
-						type: 'POST',
-						data: {pv:pv}
-					})
-				}
-			}
-		});
+		i++;
+		}
 	};
 // ________________
 
 
 // ____ APPELS FONCTIONS ____
-	highlightEvenMsg();
+	submitMessage();
 	setInterval(chatRefresh, 1000);
 	setInterval(userlistRefresh, 30000);
-	submitMessage();
+	highlightEvenMsg();
 // ________________
 
 

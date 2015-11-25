@@ -277,7 +277,7 @@ padding: 10px;
   transition: all 0.3s ease-out;
 }
 .chatbox input[type=text]:focus {
-  width: 280px;
+  width: 80%;
   border-radius: 4px;
   background-color: #D4D4D4;
   color: #3D3D3D;
@@ -289,7 +289,24 @@ padding: 10px;
   color:#63D3FF;
 }
 .send {
+  visibility: hidden;
   opacity: 0;
+  width: 80px;
+  padding: 4px 4px 2px 4px;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  background-color: #4A4A4A;
+  font-weight: bold;
+  color: #D4D4D4;
+  transition: all 0.2s ease-out;
+}
+.send:hover {
+  background-color: #353535;
+}
+.chatbox input[type=text]:focus ~ .send {
+  visibility: visible;
+  opacity: 1;
 }
 
 body {
