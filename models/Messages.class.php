@@ -1,7 +1,8 @@
 <?php
 
-class messages
+class Messages
 {
+
 
 // ________ PROPRIETES ________
 	private $id;
@@ -9,6 +10,7 @@ class messages
 	private $content;
 	private $id_user;
 // ________________
+
 
 // ________ GETTERS ________
 	public function getId()
@@ -23,18 +25,19 @@ class messages
 	{
 		return $this->content;
 	}
-	public function getIdUser()
+	public function getUser()
 	{
 		return $this->id_user;
 	}
 // ________________
 
+
 // ________ SETTERS ________
 	public function setContent($content)
 	{
-		if (isset($_POST['message']) && strlen($_POST['message'])>0 && strlen($_POST['message'])<512))
+		if ( strlen($content)>0 && strlen($content)<512 )
 		{
-			$this->content = mysqli_real_escape_string($database, $_POST['message']);
+			$this->content = $content;
 			return true;
 		}
 		else
@@ -42,15 +45,13 @@ class messages
 			return "Entre 1 et 511 caractères."
 		}
 	}
-	public function setIdUser($id_user)
+	public function setUser(Users $user)
 	{
-		if (isset($_SESSION['id']))
-		{
-			$this->id_user = intval($_SESSION['id']);
-			return true;
-		}
+		$this->id_user = $user->getId();
+		return true;
 	}
 // ________________
+
 
 }
 

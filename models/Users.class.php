@@ -1,6 +1,6 @@
 <?php
 	
-class users
+class Users
 {
 
 // ________ PROPRIETES ________
@@ -28,7 +28,7 @@ class users
 // ________ SETTERS ________
 	public function setLogged($logged)
 	{
-		if ($logged==0 || $logged==1)
+		if ( $logged==0 || $logged==1 )
 		{
 			$this->logged = $logged;
 			return true;
@@ -40,9 +40,9 @@ class users
 	}
 	public function setLogin($login)
 	{
-		if (isset($_POST['log']) && strlen($_POST['log'])>3)
+		if ( strlen($login)>3 )
 		{
-			$this->login = mysqli_real_escape_string($database, $_POST['log']);
+			$this->login = $login;
 			return true;
 		}
 		else
@@ -52,7 +52,7 @@ class users
 	}
 	public function setPassword($pass)
 	{
-		if(isset($_POST['pass']) && strlen($_POST['pass'])>5)
+		if ( strlen($pass)>5 )
 		{
 			$hash = password_hash($pass, PASSWORD_BCRYPT, array("cost"=>10));
 			$this->pass = $hash;
