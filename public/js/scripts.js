@@ -1,121 +1,119 @@
 'use strict';
 
-$('document').ready(function()
-{
-
 
 // ____ SUBMIT ____
-	function submitMessage()
+function submitMessage()
+{
+	$('.chat').on('submit', function(e)
 	{
-		$('.chat').on('submit', function(e)
+		e.preventDefault();
+		var message = $('#message').val();
+		var pv = $('#pv').val();
+	// ____ Message public ____
+		if (message != '' && message != ' ')
 		{
-			e.preventDefault();
-			var message = $('#message').val();
-			var pv = $('#pv').val();
-		// ____ Message public ____
-			if (message != '' && message != ' ')
+			if (message.length>0 && message.length<512)
 			{
-				if (message.length>0 && message.length<512)
+				$('#message').val('').blur();
+				$.ajax(
 				{
-					$('#message').val('').blur();
-					$.ajax(
-					{
-						url: 'index.php?page=chat',
-						type: 'POST',
-						data: {message:message}
-					})
-				}
+					url: 'index.php?page=chat',
+					type: 'POST',
+					data: {message:message}
+				})
 			}
-		// ____ Message privé ____
-			else if (pv != '' && pv != ' ')
+		}
+	// ____ Message privé ____
+		else if (pv != '' && pv != ' ')
+		{
+			if (pv.length>0 && pv.length<512)
 			{
-				if (pv.length>0 && pv.length<512)
+				$('#pv').val('').blur();
+				$.ajax(
 				{
-					$('#pv').val('').blur();
-					$.ajax(
-					{
-						url: 'index.php?page=chat',
-						type: 'POST',
-						data: {pv:pv}
-					})
-				}
+					url: 'index.php?page=chat',
+					type: 'POST',
+					data: {pv:pv}
+				})
 			}
-		});
-	};
+		}
+	});
+};
 // ________________
 
 
 // ____ REFRESH MESSAGES ____
-	function chatRefresh()
+function chatRefresh()
+{
+	$.ajax(
 	{
-		$.ajax(
-		{
-			url: 'index.php?page=messages&ajax'
-		})
+		url: 'index.php?page=messages&ajax'
+	})
 
-		.done(function(messages)
-		{
-			$('.messages').html(messages)
-		});
-	};
+	.done(function(messages)
+	{
+		$('.messages').html(messages)
+	});
+};
 // ________________
 
 
-// ____ REFRESH MESSAGES ____
-	function pvRefresh()
+// ____ REFRESH PV ____
+function pvRefresh()
+{
+	$.ajax(
 	{
-		$.ajax(
-		{
-			url: 'index.php?page=p_messages&ajax'
-		})
+		url: 'index.php?page=p_messages&ajax'
+	})
 
-		.done(function(messages)
-		{
-			$('.p_messages').html(messages)
-		});
-	};
+	.done(function(messages)
+	{
+		$('.p_messages').html(messages)
+	});
+};
 // ________________
 
 
 // ____ REFRESH USERLIST ____
-	function userlistRefresh()
+function userlistRefresh()
+{
+	$.ajax(
 	{
-		$.ajax(
-		{
-			url: 'index.php?page=userlist&ajax'
-		})
+		url: 'index.php?page=userlist&ajax'
+	})
 
-		.done(function(users)
-		{
-			$('.userlist').html(users)
-		});
-	};
+	.done(function(users)
+	{
+		$('.userlist').html(users)
+	});
+};
 // ________________
 
 
 // ____ HIGHLIGHT ODD ____
-	function highlightOddMsg()
+function highlightOddMsg()
+{
+	var msg = $('.msg').toArray();
+	var i = 0; 
+	while(i <= msg.length)
 	{
-		var msg = $('.msg').toArray();
-		var i = 0; 
-		while(i <= msg.length)
+		if(i % 2 == 0)
 		{
-			if(i % 2 == 0)
-			{
-				$('.msg').eq(i).addClass('highlight');
-			}
-		i++;
+			$('.msg').eq(i).addClass('highlight');
 		}
-	};
+	i++;
+	}
+};
 // ________________
 
 
-// ____ APPELS FONCTIONS ____
+$('document').ready(function()
+{
+
 	submitMessage();
 	setInterval(chatRefresh, 1000);
+	// setInterval(pvRefresh, 1000);
 	setInterval(userlistRefresh, 30000);
 	// highlightOddMsg();
-// ________________
-
 
 });
