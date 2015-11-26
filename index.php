@@ -6,12 +6,21 @@
 	if ($database === false)
 		die(mysqli_connect_error());
 
+	spl_autoload_register(function ($class)
+	{
+		require('models/'.$class.'.class.php');
+	});
+
+	if ( isset($_SESSION['id']) )
+	{
+		$usersManager = new UsersManager($database);
+		$currentUser = $usersManager->getCurrent();
+	}
+
 	$traitements = array('chat', 'users', 'logout');
 	$ways = array('home', 'login', 'register', 'chat', 'messages', 'userlist', 'pv_display', 'p_messages');
-
-
+	
 	$page = 'home';
-
 	$errors = array();
 
 	if (isset($_GET['page']))
