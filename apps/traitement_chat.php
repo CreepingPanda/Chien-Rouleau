@@ -3,19 +3,19 @@
 if ( isset($_POST['content']) )
 {
 	require('models/MessagesManager.class.php');
-	$messagesManager = new MessagesManager();
+	require('models/UsersManager.class.php');
+	$messagesManager = new MessagesManager($database);
 	$usersManager = new UsersManager();
 	$user = $usersManager->getCurrent();
-	$message = $manager->create($_POST['content'], $user);
+	$message = $messagesManager->create($_POST['content'], $user);
+	exit;
 }
 
 ?>
 
 
 
-
-
-
+<?php 
 	// if (isset($_SESSION['id']))
 	// {
 	// 	$id_user = intval($_SESSION['id']);
@@ -28,6 +28,7 @@ if ( isset($_POST['content']) )
 	// 		{
 	// 			$query = "INSERT INTO messages (content, id_user) VALUES ('".$message."', '".$id_user."')";
 	// 			$result = mysqli_query($database, $query);
+	// 			header('Location: index.php?page=chat');
 	// 			exit;
 	// 		}
 	// 	}
@@ -40,9 +41,9 @@ if ( isset($_POST['content']) )
 	// 		{
 	// 			$query = "INSERT INTO p_messages (content, id_writer, id_reader) VALUES ('".$pv."', '".$id_user."', '".$id_reader."')";
 	// 			$result = mysqli_query($database, $query);
+	// 			header('Location: index.php?page=chat');
 	// 			exit;
 	// 		}
 	// 	}
-	// }
-
+	// } 
 ?>

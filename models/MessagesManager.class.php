@@ -9,6 +9,12 @@ class MessagesManager
 	private $database;
 // ________________
 
+// ________ CONSTRUCT ________
+	public function __construct()
+	{
+		$this-database = $database;
+	}
+// ________________
 
 // ________ METHODES ________
 	public function create($content, Users $user)
@@ -50,15 +56,37 @@ class MessagesManager
 		{
 			return $valid;
 		}
-
 	}
 	public function delete()
 	{
-
+		$id = $messages->getId();
+		$query = "DELETE FROM messages WHERE id = '".$id."'";
+		$result = mysqli_query($this->database, $query);
+		if ( $result )
+		{
+			return true;
+		}
+		else
+		{
+			return "Erreur serveur";
+		}
 	}
 	public function update()
 	{
-
+		$id = $messages->getId();
+		$content = mysqli_real_escape_string($messages->getContent());
+		$id_user = $messages->getUser()->getId();
+		$query = "UPDATE messages SET content = '".$content."', id_user = '".$id_user."'
+			WHERE id = '".$id."'";
+		$result = mysqli_query($this->database, $query);
+		if ( $result )
+		{
+			return $this->findById($id);
+		}
+		else
+		{
+			return "Erreur serveur";
+		}
 	}
 	public function find($id)
 	{
@@ -87,6 +115,10 @@ class MessagesManager
 
 	}
 	public function findByUser(Users $user)
+	{
+
+	}
+	public function getCurrent()
 	{
 
 	}
