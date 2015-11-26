@@ -118,6 +118,27 @@ class MessagesManager
 	{
 
 	}
+	public function getList()
+	{
+		$selectQuery = "SELECT * FROM messages ORDER BY id DESC LIMIT 0, 100";
+		$selectResult = mysqli_query($database, $selectQuery);
+
+		if ( $selectResult )
+		{
+			while ( $message = mysqli_fetch_object($selectResult) )
+			{
+				$userQuery = "SELECT * FROM users WHERE id = '".$message->getUser()."'";
+				$userResult = mysqli_query($database, $userQuery);
+				$user = mysqli_fetch_object($userResult);
+
+				require('views/messages.phtml');
+			}
+		}
+		else {
+			return "Aucun message à afficher.";
+		}
+	}
+
 // ________________
 
 
