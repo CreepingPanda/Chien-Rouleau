@@ -10,9 +10,9 @@ class MessagesManager
 // ________________
 
 // ________ CONSTRUCT ________
-	public function __construct()
+	public function __construct($database)
 	{
-		$this-database = $database;
+		$this->database = $database;
 	}
 // ________________
 
@@ -27,7 +27,7 @@ class MessagesManager
 			if ($valid === true)
 			{
 				$content = mysqli_real_escape_string($this->database, $message->getContent());
-				$id_user = $message->getUser()->getId();
+				$id_user = $message->getUser();
 				$query = "INSERT INTO messages (content, id_user) 
 					VALUES ('".$content."', '".$id_user."')";
 				$result = mysqli_query($this->database, $query);
@@ -47,6 +47,7 @@ class MessagesManager
 				{
 					return mysqli_error();
 				}
+			}
 			else
 			{
 				return $valid;
@@ -115,10 +116,6 @@ class MessagesManager
 
 	}
 	public function findByUser(Users $user)
-	{
-
-	}
-	public function getCurrent()
 	{
 
 	}

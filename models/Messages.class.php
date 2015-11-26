@@ -42,7 +42,7 @@ class Messages
 		}
 		else
 		{
-			return "Entre 1 et 511 caractères."
+			return "Entre 1 et 511 caractères.";
 		}
 	}
 	public function setUser(Users $user)

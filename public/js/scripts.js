@@ -110,7 +110,7 @@ function highlightOddMsg()
 $('document').ready(function()
 {
 
-	// submitMessage();
+	submitMessage();
 	setInterval(chatRefresh, 1000);
 	// setInterval(pvRefresh, 1000);
 	setInterval(userlistRefresh, 30000);

@@ -10,9 +10,9 @@ class UsersManager
 // ________________
 
 // ________ CONSTRUCT ________
-	public function __construct()
+	public function __construct($database)
 	{
-		$this-database = $database;
+		$this->database = $database;
 	}
 // ________________
 
@@ -23,7 +23,7 @@ class UsersManager
 		$valid = $user->setLogin($login);
 		if ( $valid === true )
 		{
-			$valid = $user->setPassword($pass)
+			$valid = $user->setPassword($pass);
 			if ( $valid === true )
 			{
 				$login = mysqli_real_escape_string($this->database, $user->getLogin());
@@ -47,6 +47,7 @@ class UsersManager
 				{
 					return mysqli_error();
 				}
+			}
 			else
 			{
 				return $valid;
@@ -74,7 +75,7 @@ class UsersManager
 	public function update(Users $user)
 	{
 		$id = $user->getId();
-		$query = "UPDATE users SET content = '".$content."', id_author = '".$id_author."' WHERE id = '".$id"'";
+		$query = "UPDATE users SET content = '".$content."', id_author = '".$id_author."' WHERE id = '".$id."'";
 		$result = mysqli_query($this->database, $query);
 		if ( $result )
 		{
@@ -108,7 +109,7 @@ class UsersManager
 			}
 		}
 	}
-	public function findByLogin($login);
+	public function findByLogin($login)
 	{
 		if ( strlen(trim($login)) > 0 )
 		{
