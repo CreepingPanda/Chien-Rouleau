@@ -20,7 +20,7 @@
       </ul>
 
      <ul class="nav navbar-nav navbar-right">
-          <li class="register"><a href="#">Bonjour <span class="login"><?php echo $_SESSION['login']; ?></span></a></li>
+          <li class="register"><a href="#">Bonjour <span class="login"><?=$currentUser->getLogin()?></span></a></li>
             <li class="register"><?php require('apps/logout.php'); ?></li>
           </ul>
     </div><!-- /.navbar-collapse -->

@@ -1,6 +1,5 @@
 <?php
 
-require('models/Users.class.php');
 class UsersManager
 {
 

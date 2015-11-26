@@ -1,6 +1,5 @@
 <?php
 
-require('models/Messages.class.php');
 class MessagesManager
 {
 
