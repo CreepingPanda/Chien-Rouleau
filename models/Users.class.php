@@ -23,6 +23,10 @@ class Users
 	{
 		return $this->login;
 	}
+	public function getHash()
+	{
+		return $this->pass;
+	}
 // ________________
 
 // ________ SETTERS ________
@@ -62,6 +66,10 @@ class Users
 		{
 			return "6 caractères minimum.";
 		}
+	}
+	public function verifPassword($pass)
+	{
+		return (password_verify($pass, $this->pass));
 	}
 // ________________
 	

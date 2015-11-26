@@ -27,7 +27,7 @@ class UsersManager
 			if ( $valid === true )
 			{
 				$login = mysqli_real_escape_string($this->database, $user->getLogin());
-				$pass = mysqli_real_escape_string($this->database, $user->getPassword());
+				$pass = mysqli_real_escape_string($this->database, $user->getHash());
 				$query = "INSERT INTO users (login, pass)
 					VALUES ('".$login."', '".$pass."')";
 				$result = mysqli_query($this->database, $query);
@@ -114,17 +114,12 @@ class UsersManager
 		if ( strlen(trim($login)) > 0 )
 		{
 			$login = mysqli_real_escape_string($this->database, $login);
-			$query = "SELECT * FROM users WHERE login LIKE '%".$login."%'";
+			$query = "SELECT * FROM users WHERE login='".$login."'";
 			$result = mysqli_query($this->database, $query);
 			if ( $result )
 			{
-				$list = array();
-				$i = 0;
-				while ( $user = mysqli_fetch_object($result, "Users") )
-				{
-					$list[] = $user;
-				}
-				return $list;
+				$user = mysqli_fetch_object($result, "Users");
+				return $user;
 			}
 			else
 			{
